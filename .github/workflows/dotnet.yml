@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: True
 
 jobs:
   build:
