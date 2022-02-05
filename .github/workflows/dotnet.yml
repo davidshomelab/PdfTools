@@ -32,7 +32,7 @@ jobs:
     - name: Restore dependencies
       run: |
         nuget restore PdfTools.sln
-        Install-Package PDFSharp -Force
+        Install-Package PDFSharp -ProjectName PsPdf -Force
     - name: Build Solution
       run: |
         msbuild.exe PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
