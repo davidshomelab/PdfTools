@@ -1,0 +1,1 @@
+﻿New-ExternalHelp -Path $PSScriptRoot\..\Help\Markdown -OutputPath $PSScriptRoot\.. -Force

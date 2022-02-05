@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Authors>David Hollings</Authors>
+    <Company />
+    <NeutralLanguage />
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Containers\**" />
+    <Compile Remove="Utilities\**" />
+    <EmbeddedResource Remove="Containers\**" />
+    <EmbeddedResource Remove="Utilities\**" />
+    <None Remove="Containers\**" />
+    <None Remove="Utilities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="PSCmdlets\ProtectPDFDocumentCmdlet.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerShell.5.1.ReferenceAssemblies" Version="1.0.0" />
+    <PackageReference Include="PdfSharp" Version="1.50.5147" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PdfLib\PdfLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="PsPdf.dll-Help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="PsPdf.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="&quot;C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe&quot; -ExecutionPolicy RemoteSigned  -File Build\MakeHelp.ps1" />
+  </Target>
+
+</Project>
