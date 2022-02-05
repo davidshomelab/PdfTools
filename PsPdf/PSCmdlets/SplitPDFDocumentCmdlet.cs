@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Management.Automation;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
-using PdfSharp.Pdf.Security;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;

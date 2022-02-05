@@ -4,8 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using PdfLib;
 using System.Management.Automation;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
 
 namespace PsPdf.PSCmdlets
 {

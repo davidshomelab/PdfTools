@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: True
 
 jobs:
   build:
@@ -13,13 +15,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 4.8.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Install platyPS
+      run: Install-Module platyPS -Force
+
+    - name: Build Solution
+      run: |
+        pwd
+        ls
+        msbuild.exe .\PdfTools.sln /p:platform="Any CPU" /p:configuration="Release" -t:build -restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
