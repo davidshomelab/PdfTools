@@ -12,18 +12,25 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v1
-      name: Checkout Code
-     
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v2
-       
+    - uses: actions/checkout@v2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
-     
-    - name: Restore NuGet Packages
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+
+    - name: Create Build Directory
+      run: mkdir _build
+
+    - name: Restore dependencies
       run: nuget restore PdfTools.sln
-      
-    - name: Build and Publish Web App
-      run: msbuild PdfTools.sln /p:Configuration=Release
- 
+    - name: Build Solution
+      run: |
+        msbuild.exe PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
