@@ -30,7 +30,8 @@ jobs:
       run: mkdir _build
 
     - name: Restore dependencies
-      run: nuget restore PdfTools.sln
+    - run: nuget restore PdfTools.sln
+    - run: Install-Package PDFSharp
     - name: Build Solution
       run: |
         msbuild.exe PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
