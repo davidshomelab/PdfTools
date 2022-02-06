@@ -1,7 +1,6 @@
 ﻿using System.Management.Automation;
 using System.Collections.ObjectModel;
 using System.Linq;
-using PdfSharp.Pdf;
 using PdfLib;
 using PdfLib.Containers;
 
