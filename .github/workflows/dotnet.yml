@@ -21,11 +21,6 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
-    - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE
-
-    - name: Create Build Directory
-      run: mkdir _build
 
     - name: Restore dependencies
       run: |
