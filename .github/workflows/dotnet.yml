@@ -21,17 +21,13 @@ jobs:
       uses: NuGet/setup-nuget@v1.0.2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
-    - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE
+    - name: Install platyPS
+      run: Install-Module platyPS -Force
 
-    - name: Create Build Directory
-      run: mkdir _build
-
-    - name: Restore dependencies
-      run: |
-        nuget restore PdfTools.sln
     - name: Build Solution
       run: |
-        msbuild.exe PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
+        pwd
+        ls
+        msbuild.exe .\PdfTools.sln /p:platform="Any CPU" /p:configuration="Release" -t:build -restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
