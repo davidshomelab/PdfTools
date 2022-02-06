@@ -33,6 +33,7 @@ jobs:
         dir packages
     - name: Build Solution
       run: |
+        pwd
         msbuild.exe PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
     - name: Test
       run: dotnet test --no-build --verbosity normal
