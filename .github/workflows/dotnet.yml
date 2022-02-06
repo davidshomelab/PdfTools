@@ -30,6 +30,7 @@ jobs:
     - name: Restore dependencies
       run: |
         nuget restore PdfTools.sln
+        dir packages
     - name: Build Solution
       run: |
         msbuild.exe PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
