@@ -22,7 +22,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
     - name: Install platyPS
-      run: Install-Module platyPS
+      run: Install-Module platyPS -Force
     - name: Restore dependencies
       run: |
         nuget restore PdfTools.sln
