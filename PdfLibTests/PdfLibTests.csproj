@@ -69,9 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="SampleDocs\Blank.pdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="SampleDocs\SamplePdf.pdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
