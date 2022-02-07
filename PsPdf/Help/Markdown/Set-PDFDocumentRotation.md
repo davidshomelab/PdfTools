@@ -12,7 +12,7 @@ Rotate PDF document pages.
 
 ## SYNTAX
 
-```
+```powershell
 Set-PDFDocumentRotation [-Document] <String> [[-Pages] <Int32[]>] [-Rotation] <String> [-AbsoluteRotation]
  [<CommonParameters>]
 ```

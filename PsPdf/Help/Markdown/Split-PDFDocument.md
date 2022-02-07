@@ -12,7 +12,7 @@ schema: 2.0.0
 
 ## SYNTAX
 
-```
+```powershell
 Split-PDFDocument [-Document] <String> [-Pages] <Int32[]> [-OutputDocument] <String> [<CommonParameters>]
 ```
 

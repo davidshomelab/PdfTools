@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfLib", "PdfLib\PdfLib.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsPdf", "PsPdf\PsPdf.csproj", "{8E8B349E-76D2-4BD9-9C92-BDA4FBF185B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfLibTests", "PdfLibTests\PdfLibTests.csproj", "{B3E45867-A94E-4091-B1B5-F74F9B20B40D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8E8B349E-76D2-4BD9-9C92-BDA4FBF185B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E8B349E-76D2-4BD9-9C92-BDA4FBF185B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E8B349E-76D2-4BD9-9C92-BDA4FBF185B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3E45867-A94E-4091-B1B5-F74F9B20B40D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E45867-A94E-4091-B1B5-F74F9B20B40D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E45867-A94E-4091-B1B5-F74F9B20B40D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E45867-A94E-4091-B1B5-F74F9B20B40D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,7 +12,7 @@ Get user permissions for encrypted PDF document.
 
 ## SYNTAX
 
-```
+```powershell
 Get-PDFDocumentSecurityOptions [-Document] <String> [[-Password] <String>] [<CommonParameters>]
 ```
 

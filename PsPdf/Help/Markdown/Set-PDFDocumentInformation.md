@@ -12,7 +12,7 @@ Change PDF document metadata.
 
 ## SYNTAX
 
-```
+```powershell
 Set-PDFDocumentInformation [[-Document] <String>] [-Title <String>] [-Author <String>] [-Subject <String>]
  [-Keywords <String>] [-Creator <String>] [<CommonParameters>]
 ```

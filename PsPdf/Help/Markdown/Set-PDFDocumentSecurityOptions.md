@@ -12,7 +12,7 @@ schema: 2.0.0
 
 ## SYNTAX
 
-```
+```powershell
 Set-PDFDocumentSecurityOptions [-Document] <String> [-UserPassword <String>] [-OwnerPassword <String>]
  [-CurrentOwnerPassword <String>] [-PermitAccessibilityExtractContent <Boolean>] [-PermitAnnotations <Boolean>]
  [-PermitAssembleDocument <Boolean>] [-PermitExtractContent <Boolean>] [-PermitFormsFill <Boolean>]

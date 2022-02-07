@@ -18,7 +18,7 @@ namespace PsPdf.PSCmdlets
         [Parameter(Position = 2)]
         public int[] Pages { get; set; }
         [Parameter(Mandatory = true, Position = 3)]
-        [ValidateSet("0","90","180","270")]
+        [ValidateSet("0", "90", "180", "270")]
         public string Rotation { get; set; }
         [Parameter(Position = 4, HelpMessage = "Whether rotation value given is an absolute value or relative to the current page rotation.")]
         public SwitchParameter AbsoluteRotation { get; set; }
