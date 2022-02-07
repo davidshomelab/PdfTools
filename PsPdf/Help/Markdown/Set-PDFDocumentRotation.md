@@ -28,21 +28,21 @@ Rotation angles are given in degrees, must be a multiple of 90 and are treated a
 PS C:\> Set-PDFDocumentRotation -Document file1.pdf -Pages 2 -Rotation 90
 ```
 
-Rotate the second page of file1.pdf 90 degrees clockwise.
+Rotate the second page of "file1.pdf" 90 degrees clockwise.
 
 ### Rotate multiple pages
 ```powershell
 PS C:\> Set-PDFDocumentRotation -Document file1.pdf -Pages 2,3,7 -Rotation 90
 ```
 
-Rotate the second, third and seventh pages of file1.pdf 90 degrees clockwise.
+Rotate the second, third and seventh pages of "file1.pdf" 90 degrees clockwise.
 
 ### Rotate range of pages
 ```powershell
 PS C:\> Set-PDFDocumentRotation -Document file1.pdf -Pages (4..10) -Rotation 270
 ```
 
-Rotate pages 4 to 10 of file1.pdf 90 degrees anticlockwise.
+Rotate pages 4 to 10 of "file1.pdf" 90 degrees anticlockwise.
 
 ### Set absolute rotation
 ```powershell
