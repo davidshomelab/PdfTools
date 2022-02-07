@@ -12,7 +12,7 @@ Get general information about a PDF Document.
 
 ## SYNTAX
 
-```
+```powershell
 Get-PDFDocumentInformation [-Document] <String> [[-Password] <String>] [<CommonParameters>]
 ```
 

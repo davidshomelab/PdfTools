@@ -40,18 +40,18 @@ namespace PsPdf.PSCmdlets
 
         protected override void ProcessRecord()
         {
-                Collection<string> resolvedSourceDocument = GetResolvedProviderPathFromPSPath(Document, out ProviderInfo provider);
+            Collection<string> resolvedSourceDocument = GetResolvedProviderPathFromPSPath(Document, out ProviderInfo provider);
 
-                string resolvedSourceDocumentPath = resolvedSourceDocument.Single<string>();
+            string resolvedSourceDocumentPath = resolvedSourceDocument.Single<string>();
 
-                PdfDocument sourceDocument = PdfReader.Open(resolvedSourceDocumentPath, CurrentOwnerPassword, openmode: PdfDocumentOpenMode.Modify);
+            PdfDocument sourceDocument = PdfReader.Open(resolvedSourceDocumentPath, CurrentOwnerPassword, openmode: PdfDocumentOpenMode.Modify);
 
-                PdfDocument sourceBackup = PdfReader.Open(resolvedSourceDocumentPath, CurrentOwnerPassword, openmode: PdfDocumentOpenMode.Modify);
+            PdfDocument sourceBackup = PdfReader.Open(resolvedSourceDocumentPath, CurrentOwnerPassword, openmode: PdfDocumentOpenMode.Modify);
 
-                PdfSecuritySettings securitySettings = sourceDocument.SecuritySettings;
+            PdfSecuritySettings securitySettings = sourceDocument.SecuritySettings;
 
-                securitySettings.UserPassword = UserPassword;
-                securitySettings.OwnerPassword = OwnerPassword;
+            securitySettings.UserPassword = UserPassword;
+            securitySettings.OwnerPassword = OwnerPassword;
             try
             {
                 sourceDocument.Save(GetUnresolvedProviderPathFromPSPath(OutputDocument));

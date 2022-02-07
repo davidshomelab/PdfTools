@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PsPdf.PSCmdlets
 {
-    [Cmdlet(VerbsCommon.Split,"PDFDocument")]
+    [Cmdlet(VerbsCommon.Split, "PDFDocument")]
     [OutputType(typeof(void))]
     public class SplitPDFDocumentCmdlet : PSCmdlet
     {

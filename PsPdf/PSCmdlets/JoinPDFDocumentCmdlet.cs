@@ -22,7 +22,7 @@ namespace PsPdf.PSCmdlets
             List<string> validatedSourceFileNames = new List<string>();
 
 
-            foreach(string inputPath in SourceDocuments)
+            foreach (string inputPath in SourceDocuments)
             {
                 // convert all input paths to absolute paths and prepare array to pass to backend function
                 Collection<string> resolvedPaths = GetResolvedProviderPathFromPSPath(inputPath.ToString(), out ProviderInfo resolvedProvider);

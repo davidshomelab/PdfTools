@@ -12,7 +12,7 @@ Combine multiple PDF documents into a single output.
 
 ## SYNTAX
 
-```
+```powershell
 Join-PDFDocument [-SourceDocuments] <String[]> [-OutputDocument] <String> [<CommonParameters>]
 ```
 
