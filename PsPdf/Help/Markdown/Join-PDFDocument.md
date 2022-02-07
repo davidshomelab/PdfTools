@@ -17,7 +17,7 @@ Join-PDFDocument [-SourceDocuments] <String[]> [-OutputDocument] <String> [<Comm
 ```
 
 ## DESCRIPTION
-Join multiple PDF documents to produce a single output document. Source files are combined in the order they are given at the command line. All files must be unencrypted.
+Join multiple PDF documents to produce a single output document. Source files are combined in the order they are given at the command-line. All files must be unencrypted.
 
 ## EXAMPLES
 
