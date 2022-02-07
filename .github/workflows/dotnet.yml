@@ -42,4 +42,4 @@ jobs:
     - name: Build Solution
       run: msbuild.exe .\PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --verbosity normal
