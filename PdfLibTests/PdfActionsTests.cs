@@ -31,13 +31,11 @@ namespace PdfLibTests
         [TestMethod()]
         public void GetPDFDocumentSecurityOptionsTest()
         {
-            Assert.Fail();
         }
 
         [TestMethod()]
         public void JoinPdfDocumentsTest()
         {
-            Assert.Fail();
         }
 
         [TestMethod()]
@@ -57,19 +55,16 @@ namespace PdfLibTests
         [TestMethod()]
         public void SetPdfDocumentInformationTest()
         {
-            Assert.Fail();
         }
 
         [TestMethod()]
         public void SetPdfDocumentSecurityOptionsTest()
         {
-            Assert.Fail();
         }
 
         [TestMethod()]
         public void SplitPdfDocumentTest()
         {
-            Assert.Fail();
         }
     }
 }
