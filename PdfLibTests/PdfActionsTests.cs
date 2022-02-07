@@ -31,6 +31,15 @@ namespace PdfLibTests
         [TestMethod()]
         public void GetPDFDocumentSecurityOptionsTest()
         {
+            PdfActions.SetPdfDocumentInformation(SampleDoc, "Title", "Author", "Subject", "Keywords", "Creator");
+            DocumentValidation.DocumentReadable(SampleDoc);
+            PdfDocumentInfo documentInfo = PdfActions.GetPdfDocumentInformation(SampleDoc, "");
+
+            Assert.AreEqual(documentInfo.Title, "Title");
+            Assert.AreEqual(documentInfo.Author, "Author");
+            Assert.AreEqual(documentInfo.Subject, "Subject");
+            Assert.AreEqual(documentInfo.Keywords, "Keywords");
+            Assert.AreEqual(documentInfo.Creator, "Creator");
         }
 
         [TestMethod()]
