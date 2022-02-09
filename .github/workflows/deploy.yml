@@ -48,4 +48,4 @@ jobs:
       run: dotnet test --verbosity normal
     - name: Publish to PowerShell Gallery
       run: |
-        Publish-Module -Name "D:\a\PdfTools\PdfTools\PsPdf\bin\Release\PsPdf.psd1" -NugetApiKey $ {{API_KEY }}
+        Publish-Module -Name "D:\a\PdfTools\PdfTools\PsPdf\bin\Release\PsPdf.psd1" -NugetApiKey ${{ API_KEY }}
