@@ -1,12 +1,14 @@
 name: Deploy to PowerShell Gallery
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
 
 jobs:
   build:
 
     runs-on: windows-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
 
     steps:
     - uses: actions/checkout@v2
@@ -33,3 +35,6 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
+    - name: Publish to PowerShell Gallery
+      run: |
+        Publish-Module -Name "D:\a\PdfTools\PdfTools\PsPdf\bin\Release\PsPdf.psd1" -NugetApiKey $ {{API_KEY }}
