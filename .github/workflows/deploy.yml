@@ -1,0 +1,26 @@
+name: Deploy to PowerShell Gallery
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update version number
+      run: |
+        [Version]$CurrentVersion = (Import-PowerShellDataFile .\PsPdf.psd1).ModuleVersion
+        $NewVersion = "$($CurrentVersion.Major).$($CurrentVersion.Minor + 1)"
+        Update-ModuleManifest -Path .\PsPdf.psd1 -ModuleVersion $NewVersion
+    - name: Check in new version number
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
