@@ -45,7 +45,7 @@ jobs:
     - name: Build Solution
       run: msbuild.exe .\PdfTools.sln /p:platform="Any CPU" /p:configuration="Release"
     - name: Test
-      run: dotnet test --verbosity normal
+      run: dotnet test --verbosity normal  --no-build --configuration Release
     - name: Publish to PowerShell Gallery
       run: |
         Publish-Module -Name "D:\a\PdfTools\PdfTools\PsPdf\bin\Release\PsPdf.psd1" -NugetApiKey ${{ secrets.API_KEY }}
