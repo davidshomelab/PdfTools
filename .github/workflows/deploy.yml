@@ -23,7 +23,7 @@ jobs:
         New-Item PsPdf\PsPdf.dll ## This shouldn't be necessary but PS7 fails to read the manifest without a file with this name present. It doesn't matter that it's empty
         Update-ModuleManifest -Path PsPdf\PsPdf.psd1 -ModuleVersion $NewVersion
     - name: Check in new version number
-      uses: EndBug/add-and-commit@v8.0.2
+      uses: EndBug/add-and-commit@v9.1.1
       with:
         # Arguments for the git add command
         add: PsPdf\PsPdf.psd1
