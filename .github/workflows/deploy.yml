@@ -35,7 +35,7 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
+      uses: NuGet/setup-nuget@v1.1.1
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
     - name: Install platyPS
