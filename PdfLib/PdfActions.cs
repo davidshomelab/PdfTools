@@ -186,7 +186,7 @@ namespace PdfLib
             {
                 document.Save(Document);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 documentBackup.Save(Document);
                 throw;
