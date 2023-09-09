@@ -1,8 +1,6 @@
-﻿using System;
+﻿using PdfLib;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using PdfLib;
 using System.Management.Automation;
 
 namespace PsPdf.PSCmdlets

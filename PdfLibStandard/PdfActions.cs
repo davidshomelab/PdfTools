@@ -1,14 +1,16 @@
-﻿using PdfLib.Containers;
-using PdfLib.Utilities;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
-using PdfSharp.Pdf.Security;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
+using System.Collections.Generic;
+using PdfSharpCore.Pdf;
+using PdfSharpCore.Pdf.Advanced;
+using PdfSharpCore.Pdf.IO;
+using PdfSharpCore.Pdf.IO.enums;
+using PdfSharpCore.Pdf.Security;
 using System.Linq;
+using PdfLibStandard.Containers;
+using PdfLibStandard.Utilities;
 
-namespace PdfLib
+namespace PdfLibStandard
 {
     public class PdfActions
     {
@@ -67,7 +69,7 @@ namespace PdfLib
 
             foreach (string SourceFile in SourceFiles)
             {
-                pdfDocuments.Add(PdfReader.Open(SourceFile, PdfDocumentOpenMode.Import));
+                pdfDocuments.Add(PdfReader.Open(SourceFile, PdfDocumentOpenMode.Import, PdfReadAccuracy.Moderate));
             }
 
             PdfDocument outputDocument = new PdfDocument();
@@ -186,7 +188,7 @@ namespace PdfLib
             {
                 document.Save(Document);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 documentBackup.Save(Document);
                 throw;
