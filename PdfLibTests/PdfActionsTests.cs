@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PdfLib.Containers;
 using PdfLibTests.TestUtilities;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
-using System.Resources;
+using PdfSharpCore;
+using PdfSharpCore.Pdf;
+using PdfSharpCore.Pdf.IO;
 
 namespace PdfLib.Tests
 {
@@ -96,7 +96,7 @@ namespace PdfLib.Tests
                 true, true, true, true, true));
 
             // Check password can be removed with owner password
-            Assert.ThrowsException<MissingManifestResourceException>(() => PdfActions.SetPdfDocumentSecurityOptions(SampleDoc, "", "", "456", true, true, true,
+            Assert.ThrowsException<PdfSharpException>(() => PdfActions.SetPdfDocumentSecurityOptions(SampleDoc, "", "", "456", true, true, true,
                 true, true, true, true, true));
 
             DocumentValidation.DocumentReadable(SampleDoc);

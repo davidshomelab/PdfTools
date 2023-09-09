@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PsPdf", "PsPdf\PsPdf.csproj", "{8E8B349E-76D2-4BD9-9C92-BDA4FBF185B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfLibTests", "PdfLibTests\PdfLibTests.csproj", "{B3E45867-A94E-4091-B1B5-F74F9B20B40D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfLibTests", "PdfLibTests\PdfLibTests.csproj", "{B3E45867-A94E-4091-B1B5-F74F9B20B40D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PdfLib", "PdfLib\PdfLib.csproj", "{1A9467F9-B325-4095-8F63-AA919CA82732}"
 EndProject

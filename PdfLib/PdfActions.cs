@@ -1,8 +1,8 @@
 ﻿using PdfLib.Containers;
 using PdfLib.Utilities;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
-using PdfSharp.Pdf.Security;
+using PdfSharpCore.Pdf;
+using PdfSharpCore.Pdf.IO;
+using PdfSharpCore.Pdf.Security;
 using System;
 using System.Collections.Generic;
 using System.IO;

@@ -1,4 +1,4 @@
-﻿using PdfSharp.Pdf.IO;
+﻿using PdfSharpCore.Pdf.IO;
 using System.IO;
 
 namespace PdfLibTests.TestUtilities
