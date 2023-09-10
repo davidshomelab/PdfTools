@@ -1,18 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PdfLib;
 using PdfLib.Containers;
 using PdfLibTests.TestUtilities;
-using PdfSharp;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.IO;
+using PdfSharpCore;
+using PdfSharpCore.Pdf;
+using PdfSharpCore.Pdf.IO;
 
-
-namespace PdfLibTests
+namespace PdfLib.Tests
 {
     [TestClass()]
     public class PdfActionsTests
     {
-
         private const string SampleDoc = "SampleDocs\\SamplePdf.pdf";
 
         [TestMethod()]
@@ -20,8 +17,8 @@ namespace PdfLibTests
         {
             // Check expected properties of 
             PdfDocumentInfo documentInfo = PdfActions.GetPdfDocumentInformation(SampleDoc, "");
-            Assert.AreEqual(documentInfo.Title, "Sample Doc");
-            Assert.AreEqual(documentInfo.Author, "davidshomelab");
+            Assert.AreEqual("Sample Doc", documentInfo.Title);
+            Assert.AreEqual("davidshomelab", documentInfo.Author);
         }
 
 

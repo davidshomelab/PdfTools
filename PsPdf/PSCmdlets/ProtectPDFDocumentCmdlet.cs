@@ -1,12 +1,8 @@
-﻿using System;
-using System.Management.Automation;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.Security;
-using PdfSharp.Pdf.IO;
+﻿using PdfLib;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Management.Automation;
 
 namespace PsPdf.PSCmdlets
 {
@@ -25,7 +21,7 @@ namespace PsPdf.PSCmdlets
         [Parameter(HelpMessage = "Output document. If not specified, the source document will be overwritten.")]
         public string OutputDocument { get; set; }
 
-        protected override void BeginProcessing()
+        protected override void ProcessRecord()
         {
             if (OwnerPassword == null)
             {
@@ -35,36 +31,25 @@ namespace PsPdf.PSCmdlets
             {
                 OutputDocument = Document;
             }
-
-        }
-
-        protected override void ProcessRecord()
-        {
             Collection<string> resolvedSourceDocument = GetResolvedProviderPathFromPSPath(Document, out ProviderInfo provider);
 
             string resolvedSourceDocumentPath = resolvedSourceDocument.Single<string>();
 
-            PdfDocument sourceDocument = PdfReader.Open(resolvedSourceDocumentPath, CurrentOwnerPassword, openmode: PdfDocumentOpenMode.Modify);
+            string resolvedOutputDocumentPath = GetUnresolvedProviderPathFromPSPath(OutputDocument);
+            string documentpath;
 
-            PdfDocument sourceBackup = PdfReader.Open(resolvedSourceDocumentPath, CurrentOwnerPassword, openmode: PdfDocumentOpenMode.Modify);
-
-            PdfSecuritySettings securitySettings = sourceDocument.SecuritySettings;
-
-            securitySettings.UserPassword = UserPassword;
-            securitySettings.OwnerPassword = OwnerPassword;
-            try
+            if (resolvedSourceDocumentPath != resolvedOutputDocumentPath)
             {
-                sourceDocument.Save(GetUnresolvedProviderPathFromPSPath(OutputDocument));
+                File.Copy(resolvedSourceDocumentPath, resolvedOutputDocumentPath, true);
+                documentpath = resolvedOutputDocumentPath;
             }
-            catch (Exception)
+            else
             {
-                if (OutputDocument == Document && null != sourceBackup)
-                {
-                    // In the event that we hit an error when saving we restore a backup of the source document to prevent data loss
-                    sourceBackup.Save(GetUnresolvedProviderPathFromPSPath(OutputDocument));
-                }
-                throw;
+                documentpath = resolvedSourceDocumentPath;
             }
+
+            PdfActions.SetPdfDocumentSecurityOptions(documentpath, UserPassword, OwnerPassword, CurrentOwnerPassword, null, null, null, null, null, null, null, null);
+
 
         }
 

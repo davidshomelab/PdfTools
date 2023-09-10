@@ -1,10 +1,5 @@
-﻿using System;
+﻿using PdfSharpCore.Pdf.IO;
 using System.IO;
-using PdfSharp.Pdf.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PdfLibTests.TestUtilities
 {

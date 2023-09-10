@@ -1,13 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.Advanced;
-using PdfSharp.Pdf.IO;
-using PdfSharp.Pdf.Security;
-using System.Linq;
-using PdfLib.Containers;
+﻿using PdfLib.Containers;
 using PdfLib.Utilities;
+using PdfSharpCore.Pdf;
+using PdfSharpCore.Pdf.IO;
+using PdfSharpCore.Pdf.IO.enums;
+using PdfSharpCore.Pdf.Security;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace PdfLib
 {
@@ -15,7 +15,7 @@ namespace PdfLib
     {
         public static PdfDocumentInfo GetPdfDocumentInformation(string Document, string Password)
         {
-            PdfDocument pdfDocument = PdfReader.Open(Document, Password, PdfDocumentOpenMode.ReadOnly);
+            PdfDocument pdfDocument = PdfReader.Open(Document, Password, PdfDocumentOpenMode.ReadOnly, PdfReadAccuracy.Moderate);
 
             FileInfo fileInfo = new FileInfo(Document);
 
@@ -42,7 +42,7 @@ namespace PdfLib
 
         public static PDFDocumentSecurityOptions GetPDFDocumentSecurityOptions(string Document, string Password)
         {
-            PdfDocument pdfDocument = PdfReader.Open(Document, Password, PdfDocumentOpenMode.ReadOnly);
+            PdfDocument pdfDocument = PdfReader.Open(Document, Password, PdfDocumentOpenMode.ReadOnly, PdfReadAccuracy.Moderate);
 
             PdfSecuritySettings pdfSecuritySettings = pdfDocument.SecuritySettings;
 
@@ -68,7 +68,7 @@ namespace PdfLib
 
             foreach (string SourceFile in SourceFiles)
             {
-                pdfDocuments.Add(PdfReader.Open(SourceFile, PdfDocumentOpenMode.Import));
+                pdfDocuments.Add(PdfReader.Open(SourceFile, PdfDocumentOpenMode.Import, PdfReadAccuracy.Moderate));
             }
 
             PdfDocument outputDocument = new PdfDocument();
@@ -91,7 +91,7 @@ namespace PdfLib
                 throw new InvalidOperationException("Rotation must be a multiple of 90.");
             }
 
-            PdfDocument pdfDocument = PdfReader.Open(DocumentPath, PdfDocumentOpenMode.Modify);
+            PdfDocument pdfDocument = PdfReader.Open(DocumentPath, PdfDocumentOpenMode.Modify, PdfReadAccuracy.Moderate);
 
             if (Pages == null)
             {
@@ -106,6 +106,15 @@ namespace PdfLib
                     pdfPage.Rotate = 0;
                 }
                 pdfPage.Rotate = (pdfPage.Rotate + Rotation) % 360;
+
+                if (pdfPage.Rotate % 180 == 90)
+                {
+                    pdfPage.Orientation = PdfSharpCore.PageOrientation.Landscape;
+                }
+                else
+                {
+                    pdfPage.Orientation = PdfSharpCore.PageOrientation.Portrait;
+                }
             }
 
             pdfDocument.Save(DocumentPath);
@@ -120,7 +129,7 @@ namespace PdfLib
             string Creator
             )
         {
-            PdfDocument document = PdfReader.Open(Document);
+            PdfDocument document = PdfReader.Open(Document, PdfReadAccuracy.Moderate);
 
             PdfDocumentInformation documentInfo = document.Info;
 
@@ -148,8 +157,8 @@ namespace PdfLib
              bool? PermitModifyDocument,
              bool? PermitPrint)
         {
-            PdfDocument document = PdfReader.Open(Document, CurrentOwnerPassword, PdfDocumentOpenMode.Modify);
-            PdfDocument documentBackup = PdfReader.Open(Document, CurrentOwnerPassword, PdfDocumentOpenMode.Modify);
+            PdfDocument document = PdfReader.Open(Document, CurrentOwnerPassword, PdfDocumentOpenMode.Modify, PdfReadAccuracy.Moderate);
+            PdfDocument documentBackup = PdfReader.Open(Document, CurrentOwnerPassword, PdfDocumentOpenMode.Modify, PdfReadAccuracy.Moderate);
 
             PdfSecuritySettings securitySettings = document.SecuritySettings;
 
@@ -182,6 +191,10 @@ namespace PdfLib
 
             Reflection.CopyProperties(documentSecurityOptions, securitySettings);
 
+            if (OwnerPassword == null && UserPassword == null)
+            {
+                securitySettings.DocumentSecurityLevel = PdfDocumentSecurityLevel.None;
+            }
 
             try
             {
@@ -196,7 +209,7 @@ namespace PdfLib
 
         public static void SplitPdfDocument(string SourceDocument, int[] Pages, string OutputDocument)
         {
-            PdfDocument sourceDocument = PdfReader.Open(SourceDocument, PdfDocumentOpenMode.Import);
+            PdfDocument sourceDocument = PdfReader.Open(SourceDocument, PdfDocumentOpenMode.Import, PdfReadAccuracy.Moderate);
 
             PdfDocument outputDocument = new PdfDocument();
 
