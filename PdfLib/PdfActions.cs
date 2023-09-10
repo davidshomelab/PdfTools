@@ -106,6 +106,15 @@ namespace PdfLib
                     pdfPage.Rotate = 0;
                 }
                 pdfPage.Rotate = (pdfPage.Rotate + Rotation) % 360;
+
+                if (pdfPage.Rotate % 180 == 90)
+                {
+                    pdfPage.Orientation = PdfSharpCore.PageOrientation.Landscape;
+                }
+                else
+                {
+                    pdfPage.Orientation = PdfSharpCore.PageOrientation.Portrait;
+                }
             }
 
             pdfDocument.Save(DocumentPath);
@@ -182,6 +191,10 @@ namespace PdfLib
 
             Reflection.CopyProperties(documentSecurityOptions, securitySettings);
 
+            if (OwnerPassword == null && UserPassword == null)
+            {
+                securitySettings.DocumentSecurityLevel = PdfDocumentSecurityLevel.None;
+            }
 
             try
             {

@@ -37,7 +37,7 @@ namespace PsPdf.PSCmdlets
 
             string resolvedOutputDocumentPath = GetUnresolvedProviderPathFromPSPath(OutputDocument);
             string documentpath;
-            
+
             if (resolvedSourceDocumentPath != resolvedOutputDocumentPath)
             {
                 File.Copy(resolvedSourceDocumentPath, resolvedOutputDocumentPath, true);
